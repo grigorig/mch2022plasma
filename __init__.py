@@ -9,12 +9,8 @@ def on_home_button(pressed):
 
 buttons.attach(buttons.BTN_HOME, on_home_button)
 
-t = 0
-
 nickname = nvs.nvs_getstr("owner", "nickname")
-
 font = "permanentmarker36"
-
 text_width = display.getTextWidth(nickname, font)
 
 sintab = [
@@ -43,7 +39,8 @@ sintab = [
 ]
 
 def show_plasma(t):
-  display.drawFill(display.BLACK)
+  # display.drawFill(display.BLACK)
+
   for j in range(240 / 8):
     for i in range(0, 320 / 8, 4):
       # manual unroll
@@ -77,11 +74,14 @@ def show_plasma(t):
       b = 128 + sintab[(color * 2 + t) % 256]
       v = r << 16 | g << 8 | b;
       display.drawRect(i * 8, j * 8, 8, 8, True, v)
+
   offset = (320 - text_width) // 2
   display.drawText(offset + 1, 120 - 18 + 1, nickname, 0xffffff, font)
   display.drawText(offset - 1, 120 - 18 - 1, nickname, 0xffffff, font)
   display.drawText(offset , 120 - 18, nickname, 0x000000, font)
   display.flush()
+
+t = 0
 
 while True:
   show_plasma(t)
