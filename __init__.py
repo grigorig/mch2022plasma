@@ -1,3 +1,6 @@
+# Adapted from https://github.com/rad1o/f1rmware/pull/30/commits/28182bdac2cefbec142fdd3536ca2b9fe4ce63d3
+# Which was originally adapted from the r0ket plasma nick code I wrote back in 2011. :)
+
 import display
 import buttons
 import nvs
